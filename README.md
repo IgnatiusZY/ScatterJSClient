@@ -1,0 +1,2 @@
+# ScatterJSClient
+Scatter JS Client
