@@ -1,0 +1,19 @@
+{
+  "name": "scatterjsclient",
+  "version": "1.0.0",
+  "description": "Scatter JS Client",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ignatiusrevi/ScatterJSClient.git"
+  },
+  "author": "Ignatius W",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ignatiusrevi/ScatterJSClient/issues"
+  },
+  "homepage": "https://github.com/ignatiusrevi/ScatterJSClient#readme"
+}
