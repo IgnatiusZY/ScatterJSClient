@@ -28,6 +28,7 @@ ScatterJS.connect('ScatterJSClient', {network}).then(connected => {
 
     if (!connected) return console.error('No Scatter');
 
+    // Signature (PROXY) Provider
     const eos = ScatterJS.eos(network, Api, {rpc, beta3:true});
 
     // Login with the Network passed to ScatterJS.connect()
