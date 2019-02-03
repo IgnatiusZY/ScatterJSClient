@@ -9,7 +9,7 @@ dotenv.config();
 console.log("Step 1: Instantiate ScatterJS and the selected Plugins");
 ScatterJS.plugins( new ScatterEOS() );
 
-// Network Congfiguration to Connect (Reference) to Blockchain Endpoint Node
+// Network Configuration to Connect (Reference) to Blockchain Endpoint Node
 console.log("Step 2: Network Congfiguration to Connect (Reference) to Blockchain Endpoint Node");
 const network = ScatterJS.Network.fromJson({
     blockchain: process.env.BLOCKCHAIN,
