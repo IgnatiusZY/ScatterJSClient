@@ -1,7 +1,7 @@
-import ScatterJS from 'scatterjs-core';
+import ScatterJS  from 'scatterjs-core';
 import ScatterEOS from 'scatterjs-plugin-eosjs';
-import Eos from 'eosjs';
-import dotenv from 'dotenv';
+import Eos        from 'eosjs';
+import dotenv     from 'dotenv';
 
 dotenv.config();
 
@@ -10,11 +10,11 @@ ScatterJS.plugins( new ScatterEOS() );
 
 // Network Congfiguration to Connect (Reference) to Blockchain Endpoint Nodeconst network = ScatterJS.Network.fromJson({
 const network = ScatterJS.Network.fromJson({
-    blockchain: process.env.BLOCKCHAIN,
-    chainId: process.env.CHAIN_ID,
-    host: process.env.HOST,
-    port: process.env.PORT,
-    protocol: process.env.PROTOCOL
+    blockchain: `${process.env.BLOCKCHAIN}`,
+    chainId:    `${process.env.CHAINID}`,
+    host:       `${process.env.HOST}`,
+    port:       `${process.env.PORT}`,
+    protocol:   `${process.env.PROTOCOL}`
 });
 
 // Connect to Available User's Wallet - If Connected - Call API methods on ScatterJS
@@ -31,7 +31,7 @@ ScatterJS.connect('ScatterJSClient', {network}).then(connected => {
         const account = ScatterJS.account(process.env.BLOCKCHAIN);
         const options = { authorization: [`${account.name}@${account.authority}`] };
 
-        eos.transfer(account.name, 'safetransfer', '0.0001 EOS', account.name, options)
+        eos.transfer(account.name, 'emanateissue', '0.0001 EOS', account.name, options)
             .then(res => {
                 console.log('Sent: ', res);
             }).catch(err => {

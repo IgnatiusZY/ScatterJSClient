@@ -1,7 +1,7 @@
-import ScatterJS from 'scatterjs-core';
-import ScatterEOS from 'scatterjs-plugin-eosjs2';
-import {JsonRpc, Api} from 'eosjs';
-import dotenv from 'dotenv';
+import ScatterJS        from 'scatterjs-core';
+import ScatterEOS       from 'scatterjs-plugin-eosjs2';
+import { JsonRpc, Api } from 'eosjs';
+import dotenv           from 'dotenv';
 
 dotenv.config();
 
@@ -12,11 +12,11 @@ ScatterJS.plugins( new ScatterEOS() );
 // Network Configuration to Connect (Reference) to Blockchain Endpoint Node
 console.log("Step 2: Network Congfiguration to Connect (Reference) to Blockchain Endpoint Node");
 const network = ScatterJS.Network.fromJson({
-    blockchain: process.env.BLOCKCHAIN,
-    chainId: process.env.CHAIN_ID,
-    host: process.env.HOST,
-    port: process.env.PORT,
-    protocol: process.env.PROTOCOL
+    blockchain: `${process.env.BLOCKCHAIN}`,
+    chainId:    `${process.env.CHAINID}`,
+    host:       `${process.env.HOST}`,
+    port:       `${process.env.PORT}`,
+    protocol:   `${process.env.PROTOCOL}`
 });
 
 // Blockchain Wrapper to Wrap the actual Blockchain Libraries (eosjs)
@@ -40,8 +40,7 @@ ScatterJS.connect('ScatterJSClient', {network}).then(connected => {
         console.log('ID: ', id);
 
         console.log("Step 5: Successful Login with IDENTITY, will be available at ScatterJS.IDENTITY - If a User Refresh the Page & is Logged in - ScatterJS.IDENTITY will be Auto-filled");
-        const account = ScatterJS.account(process.env.BLOCKCHAIN);
-
+        const account = ScatterJS.account(`${process.env.BLOCKCHAIN}`); // Return undefined
         console.log(account);
         
         eos.transact({
@@ -54,18 +53,18 @@ ScatterJS.connect('ScatterJSClient', {network}).then(connected => {
                 }],
                 data: {
                     from: account.name,
-                    to: 'safetransfer',
+                    to: 'emanateissue',
                     quantity: '0.0001 EOS',
                     memo: account.name,
                 },
             }]
         }, {
-            blocksBehind: 3,
+            blocksBehind:  3,
             expireSeconds: 30,
         }).then(res => {
-            console.log('Sent: ', res);
+            console.log('Trx Sent: ', res);
         }).catch(err => {
-            console.error('Error: ', err);
+            console.error('Trx Error: ', err);
         });
     }).then(res => {
         console.log('Successful Login with IDENTITY: ', res);
