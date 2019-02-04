@@ -40,8 +40,8 @@ ScatterJS.connect('ScatterJSClient', {network}).then(connected => {
         console.log('ID: ', id);
 
         console.log("Step 5: Successful Login with IDENTITY, will be available at ScatterJS.IDENTITY - If a User Refresh the Page & is Logged in - ScatterJS.IDENTITY will be Auto-filled");
-        const account = ScatterJS.account(`${process.env.BLOCKCHAIN}`); // Return undefined
-        console.log(account);
+        const account = ScatterJS.account(`${process.env.BLOCKCHAIN}`);
+        console.log('Account: ', account);
         
         eos.transact({
             actions: [{
@@ -66,10 +66,5 @@ ScatterJS.connect('ScatterJSClient', {network}).then(connected => {
         }).catch(err => {
             console.error('Trx Error: ', err);
         });
-    }).then(res => {
-        console.log('Successful Login with IDENTITY: ', res);
-    }).catch(err => {
-        console.error('Login Error: ', err);
-        process.exit();
     });
 });
